@@ -24,7 +24,8 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
           'Rust': '.rs',
           'Scala': '.scala',
           'Swift': '.swift',
-          'TypeScript': '.ts'
+          'TypeScript': '.ts',
+          'MySQL':'.sql'
         };
 
         const localStorageExs = {
@@ -46,7 +47,8 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
           'Rust': 'rust',
           'Scala': 'scala',
           'Swift': 'swift',
-          'TypeScript': 'typeScript'
+          'TypeScript': 'typeScript',
+          'Sql':'sql'
         };
 
         probNameElement = document.querySelector(
@@ -79,7 +81,11 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
             memoryText = memory.innerText;
           }
 
-          commitMsg = `[${probNum}] [Time Beats: ${runtimeText}] [Memory Beats: ${memoryText}] - LeetPush`;
+          if (solutionLangText=='MySQL')
+            commitMsg = `[${probNum}] [Time Beats: ${runtimeText}] [Memory Beats: ${memoryText}] - LeetPush`;
+          else
+            commitMsg = `[${probNum}] [Time Beats: ${runtimeText}] [Memory Beats: ${memoryText}] - LeetPush`;
+
           await sessionStorage.setItem('commitMsg', commitMsg);
         }
 
